@@ -1,8 +1,15 @@
 -- In the modern era (1960-present), how many regular season games did the best team win each season?
 -- Challenge: Try to include the team's name in the results. Is it accurate?
+-- You cannot include name in the SELECT statement. Imagine if there were two teams in
+-- in 2001 that had >110 wins. These would both show, but you only want to show the max!
+
+SELECT year, MAX(wins) FROM teams
+WHERE year >= 1960
+GROUP BY year
+ORDER BY MAX(wins) DESC;
 
 -- Expected result: 61 rows, starting with
---
+-- 
 -- +------+-------------------------------+-----------+
 -- | 2001 | Seattle Mariners              | 116       |
 -- | 1998 | New York Yankees              | 114       |
